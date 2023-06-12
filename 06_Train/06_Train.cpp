@@ -59,6 +59,16 @@ public:
 		this->amount_of_vagons = 0;
 		this->vagon = nullptr;
 	}
+	Train(const Train &other)
+	{
+		this->model = other.model;
+		this->amount_of_vagons = other.amount_of_vagons;
+		this->vagon = new Vagon[other.amount_of_vagons];
+		for (int i = 0; i < other.amount_of_vagons; i++)
+		{
+			vagon[i] = other.vagon[i];
+		}
+	}
 	//Train(string model, int amount_of_vagons, Vagon vagon)// і перезавантажений конструктор.
 	//{
 	//	this->model = model;
@@ -77,21 +87,7 @@ public:
 		}
 		//cout << "\nVagon -> " << "\n\tNumber vagony : " << vagon.number_Vagony << "\n\tNumber of seats : " << vagon.amount_Of_Pasanger_Place << "\n\tNumber of passengers : " << vagon.amountPasangers << endl;
 	}
-	void Add_Vagon(Vagon v)// Реалізувати метод додавання вагону до динамічного масиву
-	{
-		amount_of_vagons++;
-		Vagon* temp = new Vagon[amount_of_vagons];
-		for (size_t i = 0; i < amount_of_vagons - 1; i++)
-		{
-			temp[i] = vagon[i];
-		}
-		temp[amount_of_vagons - 1] = v;
-		if (vagon != nullptr)
-		{
-			delete[]vagon;
-		}
-		vagon = temp;
-	}
+	void Add_Vagon(Vagon v);// Реалізувати метод додавання вагону до динамічного масиву	
 	void Add_One_Passenger(int number_vagon) 
 	{
 		//Реалізувати метод - додати 1 пасажира у вагон
@@ -110,6 +106,22 @@ public:
 		cout << "Destructor" << endl;
 	}
 };
+
+void Train::Add_Vagon(Vagon v)// Реалізувати метод додавання вагону до динамічного масиву
+{
+	amount_of_vagons++;
+	Vagon* temp = new Vagon[amount_of_vagons];
+	for (size_t i = 0; i < amount_of_vagons - 1; i++)
+	{
+		temp[i] = vagon[i];
+	}
+	temp[amount_of_vagons - 1] = v;
+	if (vagon != nullptr)
+	{
+		delete[]vagon;
+	}
+	vagon = temp;
+}
 int main()
 {
 	Train train("Tom");
@@ -124,6 +136,9 @@ int main()
 	train.Add_One_Passenger(1);
 	train.Add_One_Passenger(2);
 	train.Show();
+	cout << "*****************************" << endl;
+	Train newTrain = Train(train);
+	newTrain.Show();
 
 
 } // виклик деструкторів
