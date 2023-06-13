@@ -45,12 +45,14 @@ class Train
 	string model;// модель
 	int amount_of_vagons;// кількість вагонів
 	Vagon* vagon;// вказівник на масив вагонів
+	Vagon vagon;// вказівник на масив вагонів
 public:
 	Train()
 	{
 		model = "no model";
 		amount_of_vagons = 0;
 		vagon = nullptr;
+
 
 	}
 	Train(string model)// В класі потяг оголосити дефолтний конструктор і перезавантажений конструктор.
