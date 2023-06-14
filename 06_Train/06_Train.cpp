@@ -45,7 +45,7 @@ class Train
 	string model;// модель
 	int amount_of_vagons;// кількість вагонів
 	Vagon* vagon;// вказівник на масив вагонів
-	Vagon vagon;// вказівник на масив вагонів
+	//Vagon vagon;// вказівник на масив вагонів
 public:
 	Train()
 	{
@@ -107,6 +107,15 @@ public:
 		}
 		cout << "Destructor" << endl;
 	}
+	Train operator+(const Train& other)
+	{
+		Train result(*this);
+		for (int i = 0; i < other.amount_of_vagons; i++)
+		{
+			result.Add_Vagon(other.vagon[i]);
+		}
+		return result;
+	}
 };
 
 void Train::Add_Vagon(Vagon v)// Реалізувати метод додавання вагону до динамічного масиву
@@ -142,5 +151,9 @@ int main()
 	Train newTrain = Train(train);
 	newTrain.Show();
 
+	cout << "*****************************" << endl;
+
+	Train superTrain = train + newTrain;
+	superTrain.Show();
 
 } // виклик деструкторів
