@@ -116,6 +116,48 @@ public:
 		}
 		return result;
 	}
+	void operator++()
+	{
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			vagon[i].amountPasangers++;
+		}
+	}
+	Vagon getVagon(int index)
+	{
+		if (index < 0 || index >= amount_of_vagons)return Vagon();
+
+		return vagon[index];
+	}
+	Vagon operator[](int index)
+	{
+		if (index < 0 || index >= amount_of_vagons)return Vagon();
+
+		return vagon[index];
+	}
+	void ChangePassangers(int count)
+	{
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			vagon[i].amountPasangers += count;
+		}
+	}
+	void operator ()(int count)
+	{
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			vagon[i].amountPasangers += count;
+		}
+	}
+	void operator ()(int count, int number)
+	{
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			if(vagon[i].number_Vagony == number)
+				vagon[i].amountPasangers += count;
+		}
+	}
+
 };
 
 void Train::Add_Vagon(Vagon v)// Реалізувати метод додавання вагону до динамічного масиву
@@ -155,5 +197,18 @@ int main()
 
 	Train superTrain = train + newTrain;
 	superTrain.Show();
+	++superTrain;
+	++superTrain;
+	++superTrain;
+	++superTrain;
+	//superTrain.Show();
 
+	superTrain.ChangePassangers(10);
+	superTrain(3);
+	superTrain(2,3);
+	superTrain.Show();
+	/*Vagon vagon = superTrain.getVagon(5);
+	vagon.Print();
+	vagon = superTrain[0];
+	vagon.Print();*/
 } // виклик деструкторів

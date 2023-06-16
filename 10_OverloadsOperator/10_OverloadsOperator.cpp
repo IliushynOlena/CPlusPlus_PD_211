@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 class Point
@@ -80,15 +80,15 @@ public:
 		this->y = other.y;
 		return *this;
 	}
-	bool operator<(const Point& other)const
-	{
-		/*if ((this->x + this->y) < (other.x + other.y))
-			return true;
-		else
-			return false;*/
+	//bool operator<(const Point& other)const
+	//{
+	//	/*if ((this->x + this->y) < (other.x + other.y))
+	//		return true;
+	//	else
+	//		return false;*/
 
-		return (this->x + this->y) < (other.x + other.y);
-	}
+	//	return (this->x + this->y) < (other.x + other.y);
+	//}
 	bool operator>(const Point& other)const
 	{
 		return (this->x + this->y) > (other.x + other.y);
@@ -110,24 +110,94 @@ public:
 		//return (this->x != other.x) || (this->y != other.y);
 		return !(*this == other);
 	}
-
+	Point operator++()//префіксна форма
+	{
+		++this->x;
+		++this->y;
+		return *this;
+	}
+	Point operator--()//префіксна форма
+	{
+		--this->x;
+		--this->y;
+		return *this;
+	}
+	Point operator++(int k)//постфіксна форма
+	{
+		this->x++;
+		this->y++;
+		return *this;
+	}
+	Point operator--(int)//постфіксна форма
+	{
+		this->x--;
+		this->y--;
+		return *this;
+	}
+	int getX()const
+	{
+		return x;
+	}
+	int getY()const
+	{
+		return y;
+	}
+	friend bool operator<(const Point& point1, const Point& point2);
+	friend ostream& operator <<(ostream& out, const Point& point);
+	friend istream& operator>>(istream& in,  Point& point);
 };
+bool operator<(const Point& point1, const Point& point2)
+{
+	return (point1.x + point1.y) < (point2.x + point2.y);
+}
+ostream& operator <<(ostream& out, const Point& point)
+{
+	out << "X : " << point.x << " Y: " << point.y << endl;
+	return out;
+}
+istream& operator>>(istream& in,  Point& point)
+{
+	in >> point.x;
+	in.ignore(1);
+	in >> point.y;
+	return in;
+}
+
+//bool operator<(const Point& point1 ,const Point& point2)
+//{
+//	return (point1.getX() + point1.getY()) < (point2.getX() + point2.getY());
+//}
 int main()
 {
-	/*
 	int a = 5;
-	int b = 7;
-	cout << a + b << endl;
-	cout << a * b << endl;
-	cout << a / b << endl;*/
+
+	//int a = 5;
+	//int b = 7;
+	//a++;//postfix ->
+	//++a;//prefix
+	//cout << a++ << endl;//->
+	//cout << ++a << endl;//<-
+	//cout << a + b << endl;
+	//cout << a * b << endl;
+	//cout << a / b << endl;
 	Point point1(2, 8);
-	Point point2(8, 4);
+	Point point2(8, 4);	
+	/*--point1;
+	++point2;
+	point1++;
+	point2--;*/
+	cout << (point1 < point2) << endl;
+	//ostream
+		//cin >> a;
+	cout << "Enter point : ";
+	cin >> point1;
+	cout<< point1 <<  point2 << endl;
 	
 	//cout << point1 + point2 << endl;
 	cout << "Point 1 : "; point1.Print();
 	cout << "Point 2 : "; point2.Print();
 	Point res =  point1.Plus(point2);
-
+	res = point1 + point2;
 	//point1 = point2;
 	//res = point2 = point1;
 	//cout << "Point 1 : "; point1.Print();
