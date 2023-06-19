@@ -157,6 +157,16 @@ public:
 				vagon[i].amountPasangers += count;
 		}
 	}
+	operator string()
+	{
+		/*string res = "";
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			res += to_string(vagon[i].number_Vagony) + " ";
+		}
+		return res;*/
+		return model;
+	}
 
 };
 
@@ -207,6 +217,9 @@ int main()
 	superTrain(3);
 	superTrain(2,3);
 	superTrain.Show();
+
+	cout << "-------------------------------" << endl;
+	cout << (string)superTrain << endl;
 	/*Vagon vagon = superTrain.getVagon(5);
 	vagon.Print();
 	vagon = superTrain[0];

@@ -128,12 +128,7 @@ public:
 		this->y++;
 		return *this;
 	}
-	Point operator--(int)//постфіксна форма
-	{
-		this->x--;
-		this->y--;
-		return *this;
-	}
+	
 	int getX()const
 	{
 		return x;
@@ -142,9 +137,19 @@ public:
 	{
 		return y;
 	}
+	void setX(int x)
+	{
+		this->x = x;
+	}
+	void setY(int y)
+	{
+		this->y = y;
+	}
 	friend bool operator<(const Point& point1, const Point& point2);
 	friend ostream& operator <<(ostream& out, const Point& point);
 	friend istream& operator>>(istream& in,  Point& point);
+
+	friend Point operator--(Point& mythis, int);//постфіксна форма
 };
 bool operator<(const Point& point1, const Point& point2)
 {
@@ -155,12 +160,25 @@ ostream& operator <<(ostream& out, const Point& point)
 	out << "X : " << point.x << " Y: " << point.y << endl;
 	return out;
 }
+//cout << point1 ;
 istream& operator>>(istream& in,  Point& point)
 {
+	//cin >> point;
+	//istream cin;
 	in >> point.x;
-	in.ignore(1);
+	//in.ignore();
 	in >> point.y;
 	return in;
+}
+
+
+Point operator--(Point &mythis, int)//постфіксна форма
+{
+	mythis.x--;
+	mythis.y--;
+	/*mythis.setX(mythis.getX()-1);
+	mythis.setY(mythis.getY()-1);	*/
+	return mythis;
 }
 
 //bool operator<(const Point& point1 ,const Point& point2)
@@ -181,6 +199,11 @@ int main()
 	//cout << a * b << endl;
 	//cout << a / b << endl;
 	Point point1(2, 8);
+	//ostream cout;
+	
+	point1--;
+	cout << "Point 1 : "; point1.Print();
+
 	Point point2(8, 4);	
 	/*--point1;
 	++point2;

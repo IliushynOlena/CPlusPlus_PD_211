@@ -155,6 +155,7 @@ int main()
     DisplayArr(arr);
     cout << endl;
     cout << "!!!" << endl;
+    //Array arrnew = 10000;
     //DisplayArr(3);
     Array arr2(3);
     DisplayArr(arr2);

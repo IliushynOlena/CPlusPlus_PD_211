@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10_OverloadsOperator", "10_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11_PhoneBook", "11_PhoneBook\11_PhoneBook.vcxproj", "{E4FDD576-3A39-4C4B-9D0B-9E1A5EAE8E33}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12_OverloadTypes", "12_OverloadTypes\12_OverloadTypes.vcxproj", "{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{E4FDD576-3A39-4C4B-9D0B-9E1A5EAE8E33}.Release|x64.Build.0 = Release|x64
 		{E4FDD576-3A39-4C4B-9D0B-9E1A5EAE8E33}.Release|x86.ActiveCfg = Release|Win32
 		{E4FDD576-3A39-4C4B-9D0B-9E1A5EAE8E33}.Release|x86.Build.0 = Release|Win32
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Debug|x64.ActiveCfg = Debug|x64
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Debug|x64.Build.0 = Debug|x64
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Debug|x86.ActiveCfg = Debug|Win32
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Debug|x86.Build.0 = Debug|Win32
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Release|x64.ActiveCfg = Release|x64
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Release|x64.Build.0 = Release|x64
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Release|x86.ActiveCfg = Release|Win32
+		{6EBE531A-7E2B-4EE3-8CAB-452D89ABDC40}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
