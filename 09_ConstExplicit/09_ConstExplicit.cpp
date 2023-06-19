@@ -122,6 +122,17 @@ public:
     {
         cout << arr[index] << " ";
     }
+    int operator[](int index) 
+    { 
+        return arr[index];
+    }
+    int operator()(int value) 
+    {
+        for (size_t i = 0; i < size; i++)
+        {          
+              arr[i] += value;
+        }
+    }
 };
 
 void DisplayArr(const Array& arr)
