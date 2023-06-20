@@ -40,3 +40,43 @@ void Library::AddBook(Book b)
 	books = newbooks;
 	bookCount++;
 }
+
+Library::Library(const Library& other)
+{
+	name = other.name;
+	address = other.address;
+	bookCount = other.bookCount;
+	books = new Book[other.bookCount];
+	for (int i = 0; i < other.bookCount; i++)
+	{
+		books[i] = other.books[i];
+	}
+	cout << "Copy Constructor" << endl;
+}
+
+Library::Library(Library&& other)
+{
+	name = other.name;
+	address = other.address;
+	books = other.books;
+	bookCount = other.bookCount;
+	other.books = nullptr;
+	cout << "Move c-tor" << endl;
+}
+
+Library& Library::operator=(const Library& other)
+{
+	name = other.name;
+	address = other.address;
+	bookCount = other.bookCount;
+	if (books != nullptr)
+		delete[]books;
+
+	books = new Book[other.bookCount];
+	for (int i = 0; i < other.bookCount; i++)
+	{
+		books[i] = other.books[i];
+	}
+	cout << "Operator [=]" << endl;
+	return *this;
+}
