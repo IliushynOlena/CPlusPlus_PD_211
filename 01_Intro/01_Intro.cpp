@@ -116,8 +116,16 @@ public:
 	}
 };
 
+void Hello()
+{
+	cout << "Hello" << endl;
+}
+
 int main()
 {
+	Hello();
+	cout << Hello << endl;
+	/*
 	Student st;//object
 	st.setName("Petro");
 	st.setMark(10, 0);
@@ -126,6 +134,7 @@ int main()
 
 	cout << "Name : " << st.getName() << " Mark : " << st.getMark(0) << endl;
 	cout << "Average mark " << st.getAverage() << endl;
+	*/
 	/*
 	Student st;//object
 	st.name = "Petro";
