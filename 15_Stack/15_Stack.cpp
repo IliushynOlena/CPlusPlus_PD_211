@@ -60,7 +60,7 @@ private:
     int* arr;
     int top;
 public:
-    Stack() = delete;
+    Stack() =  delete;//delete = do not allow to create a default c-tor  //default = {}
     Stack(int size):size(size)
     {
         arr = new int[size];
@@ -68,7 +68,7 @@ public:
     }
     bool IsFull()const
     {
-        return top == size - 1;
+        return top == size - 1;//9 == 10-1
     }
     bool Push(int value)
     {

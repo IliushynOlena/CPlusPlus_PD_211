@@ -9,7 +9,7 @@ class Queue
     int size;
     int top;
 public:
-    Queue() = default;
+    Queue() = default;//{}
     Queue(int size)
     {
         this->size = size;
