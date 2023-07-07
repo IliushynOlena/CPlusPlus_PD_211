@@ -14,11 +14,13 @@ private:
 	};
 	Node* head;
 	Node* tail;
+	int size;
 public:
 	List()
 	{
 		head = nullptr;
 		tail = nullptr;
+		size = 0;
 	}
 	List(const List &other)
 	{
@@ -61,6 +63,7 @@ public:
 
 		head->prev = newNode;
 		head = newNode;
+		size++;
 	}
 	void PrintList()const
 	{
@@ -100,6 +103,7 @@ public:
 			tail->next = newNode;
 			tail = newNode;
 		}
+		size++;
 	}
 	T_data GetElement(int pos)//pos = 3
 	{
@@ -130,7 +134,6 @@ public:
 		{
 			delete head;
 			head = tail = nullptr;
-			return;
 		}
 		else
 		{
@@ -138,6 +141,63 @@ public:
 			delete tail->next;
 			tail->next = nullptr;
 		}
+		size--;
+	}
+	void DeleteFromHead()
+	{
+		if (head == nullptr)return;
+		if (head->next == nullptr)
+		{
+			delete head;
+			head = tail = nullptr;
+		}
+
+		Node* current = head->next;
+		delete head;
+		head = current;
+		size--;
+	}
+	int GetLength()
+	{
+		return size;
+	}
+	void DeleteByPosition(int pos)//100 - 999
+	{
+		if (pos < 1 || pos > size)return;
+		else if (pos == 1)
+		{
+			DeleteFromHead();
+		}
+		else if (pos == size)
+		{
+			DeleteFromTail();
+		}
+		else
+		{
+			Node* current = nullptr;
+			if (pos < size / 2)//start with HEAD
+			{
+				current = head;
+				for (int i = 1; i < pos; i++)
+				{
+					current = current->next;//3
+				}
+			}
+			else//strat with TAIL
+			{
+				current = tail;
+				for (int i = size; i > pos; i--)
+				{
+					current = current->prev;//3
+				}
+			}
+			//1 - Find element to delete by position			
+			//2 Update links
+			current->next->prev = current->prev;
+			current->prev->next = current->next;
+			delete current;
+			size--;
+		}		
 	}
 };
 
@@ -177,6 +237,10 @@ class Train
 	List<Vagon> vagons;
 	//Vagon vagon;// вказівник на масив вагонів
 public:
+	void DeleteTrainByPos(int pos)
+	{
+
+	}
 	Train()
 	{
 		model = "no model";
@@ -213,26 +277,31 @@ public:
 
 int main()
 {
-	Train train("Tomas");
-	train.Add_VagonToHead(Vagon{ 1,15,5 });
-	train.Add_VagonToHead(Vagon{ 2,25,3 });
-	train.Add_VagonToHead(Vagon{ 3,10,8 });
-	train.Add_VagonToHead(Vagon{ 4,15,12 });
-	train.Show();
+	//Train train("Tomas");
+	//train.Add_VagonToHead(Vagon{ 1,15,5 });
+	//train.Add_VagonToHead(Vagon{ 2,25,3 });
+	//train.Add_VagonToHead(Vagon{ 3,10,8 });
+	//train.Add_VagonToHead(Vagon{ 4,15,12 });
+	//train.Show();
+	//Train newTrain(train);//
+	//newTrain.Show();
+	//newTrain = train;
 
-	Train newTrain(train);//
-	newTrain.Show();
-
-
-	newTrain = train;
-
-	/*List l;
+	List<int> l;
 	for (int i = 0; i < 10; i++)
 	{
 		l.AddToHead(i);
 	}
-	l.PrintList();
 
+	l.PrintList();
+	cout << "Length = " << l.GetLength() << endl;
+	l.DeleteByPosition(1);
+	l.PrintList();
+	cout << "Length = " << l.GetLength() << endl;
+	l.DeleteByPosition(9);
+	l.PrintList();
+	cout << "Length = " << l.GetLength() << endl;
+	/*
 	l.AddToTail(100);
 	l.AddToTail(200);
 	l.AddToTail(300);
