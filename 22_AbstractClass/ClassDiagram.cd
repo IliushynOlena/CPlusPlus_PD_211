@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Animal" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAFASAgIAAAAAIEAAA=</HashCode>
+      <FileName>22_AbstractClass.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lion" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAABAAAACAAAAAAAAgAAAA=</HashCode>
+      <FileName>22_AbstractClass.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Duck" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAIAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>22_AbstractClass.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reptile" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>22_AbstractClass.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Frog" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAA=</HashCode>
+      <FileName>22_AbstractClass.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

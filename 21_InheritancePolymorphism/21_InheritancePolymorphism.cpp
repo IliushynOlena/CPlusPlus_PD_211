@@ -4,7 +4,7 @@ using namespace std;
 
 class Car
 {
-protected:
+protected://private
 	string model;
 	float volume;
 	int year;
