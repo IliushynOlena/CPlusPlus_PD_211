@@ -1,6 +1,27 @@
 #include <iostream>
 using namespace std;
 
+class Document
+{
+private:
+    string name;
+    string format;
+    int pages;
+public:
+    Document() :name("no name"), format("no format"), pages(0) {}
+    Document(string name, string format, int pages) :name(name), format(format)
+    {
+        this->pages = pages > 0 ? pages : 0;
+    }
+    void ShowInfo()const
+    {
+        cout << "___________Document________" << endl;
+        cout << "Name : " << name << endl;
+        cout << "Format : " << format << endl;
+        cout << "Pages : " << pages << endl;
+    }
+  
+};
 class Cartridge
 {
 public:
@@ -49,11 +70,13 @@ private:
     Cartridge* cartridges;
     int countCartridges;
     Scanner scanner;
+    const Document* doc;
 
 public:
-    Printer() :model("no model"), cartridges(nullptr), countCartridges(0) {}
+    Printer() :model("no model"), cartridges(nullptr), countCartridges(0), doc(nullptr) {}
     Printer(string model, float scanRes, float h, float w)
     {
+        doc = nullptr;
         this->model = model;
         scanner = Scanner(scanRes, h, w);
 
@@ -73,7 +96,17 @@ public:
     }
     void PrintDocument()const
     {
-        cout << "Printing......with setting" << endl;
+        if (doc == nullptr)
+            cout << "No document to print!" << endl;
+        else
+        {
+            cout << "Printing......" << endl;
+            doc->ShowInfo();
+        }      
+    }
+    void CartridgeSetting()
+    {
+        cout << "You have cartridges :" << endl;
         for (int i = 0; i < countCartridges; i++)
         {
             cartridges[i].ShowInfo();
@@ -84,13 +117,28 @@ public:
         if (cartridges != nullptr)
             delete[]cartridges;
     }
+    void AddDocument(const Document &doc)
+    {
+        this->doc = &doc;
+    }
+    void Cancel()
+    {
+        doc = nullptr;
+    }
 };
-
 int main()
 {
+    Document document("Passport", "A5", 7);
+    Document document2("C++ for beginners", "A4", 1500);
     Printer printer("HP", 300, 50, 30);
     printer.Scan();
     printer.PrintDocument();
-    
+
+    printer.AddDocument(document);
+    printer.PrintDocument(); 
+
+    printer.AddDocument(document2);
+    printer.Cancel();
+    printer.PrintDocument();
 }
 
