@@ -51,6 +51,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "23_VirtualDestructor", "23_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "24_MultiInheritance", "24_MultiInheritance\24_MultiInheritance.vcxproj", "{4760316C-17AE-492F-BACA-0E8F9F79D84C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "25_AgregationComposition", "25_AgregationComposition\25_AgregationComposition.vcxproj", "{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -251,6 +253,14 @@ Global
 		{4760316C-17AE-492F-BACA-0E8F9F79D84C}.Release|x64.Build.0 = Release|x64
 		{4760316C-17AE-492F-BACA-0E8F9F79D84C}.Release|x86.ActiveCfg = Release|Win32
 		{4760316C-17AE-492F-BACA-0E8F9F79D84C}.Release|x86.Build.0 = Release|Win32
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Debug|x64.ActiveCfg = Debug|x64
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Debug|x64.Build.0 = Debug|x64
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Debug|x86.ActiveCfg = Debug|Win32
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Debug|x86.Build.0 = Debug|Win32
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Release|x64.ActiveCfg = Release|x64
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Release|x64.Build.0 = Release|x64
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Release|x86.ActiveCfg = Release|Win32
+		{ECA74384-4FF1-494D-B85A-9DC3B12C5FBC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
