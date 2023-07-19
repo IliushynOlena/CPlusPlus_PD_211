@@ -125,7 +125,7 @@ public:
 	}
 	Vagon getVagon(int index)
 	{
-		if (index < 0 || index >= amount_of_vagons)return Vagon();
+		if (index < 0 || index >= amount_of_vagons) return Vagon();
 
 		return vagon[index];
 	}
