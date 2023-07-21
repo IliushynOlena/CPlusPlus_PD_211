@@ -171,6 +171,10 @@ int main()
 		cout << "Unknown error" << endl;
 	}
 
+	int a = 10;
+	int b;
+	b = 100;
+
 	//char login[100];
 	//char password[100];
 	//for (int i = 0; i < 5; i++)

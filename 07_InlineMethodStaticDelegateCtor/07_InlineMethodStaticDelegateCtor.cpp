@@ -16,6 +16,7 @@ private:
 public:
     Human():name(""), age(0),weight(0)
     {
+        this->name = "Ivan";
         count_human++;
        /* name = "";
         age = 0;
@@ -43,10 +44,10 @@ public:
     {
         return count_human;
     }
-    void Show()
+    void Show()const
     {
-        
-        cout << "Name : " << name << endl;
+        //this->name = "Ivan";
+        cout << "Name : " << this->name << endl;
         cout << "Age : " << age << endl;
         cout << "Weight : " << weight << endl;
         cout << "Count of human : " << count_human << endl;
