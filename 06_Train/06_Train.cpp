@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 /*
 	Для масиву вагонів створити окрему структуру
@@ -38,7 +39,20 @@ struct Vagon
 		cout << "amount_Of_Pasanger_Place : " << amount_Of_Pasanger_Place << endl;
 		cout << "amountPasangers : " << amountPasangers << endl;
 	}
+	friend ofstream& operator << (ofstream& out, const Vagon& vagon);
+	friend ifstream& operator >> (ifstream& out, Vagon& vagon);
 };
+ofstream& operator << (ofstream& out, const Vagon& vagon)
+{
+	out << vagon.number_Vagony << " " << vagon.amount_Of_Pasanger_Place << 
+		" " << vagon.amountPasangers;
+	return out;
+}
+ifstream& operator >> (ifstream& in, Vagon& vagon)
+{
+	in >> vagon.number_Vagony >> vagon.amount_Of_Pasanger_Place >> vagon.amountPasangers;
+	return in;
+}
 
 class Train
 {
@@ -47,6 +61,31 @@ class Train
 	Vagon* vagon;// вказівник на масив вагонів
 	//Vagon vagon;// вказівник на масив вагонів
 public:
+	void SaveToFile()
+	{
+		ofstream out("trains.txt", ios_base::out);
+		out << model << endl;
+		out << amount_of_vagons << endl;
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			out << vagon[i] << endl;
+		}
+		out.close();
+	}
+	void LoadFromFile()
+	{
+		ifstream in("trains.txt", ios_base::in);
+		getline(in, model);
+		in >> amount_of_vagons;
+		if (vagon != nullptr)
+			delete[]vagon;
+		vagon = new Vagon[amount_of_vagons];
+		for (int i = 0; i < amount_of_vagons; i++)
+		{
+			in >> vagon[i];
+		}
+		in.close();
+	}
 	Train()
 	{
 		model = "no model";
@@ -188,7 +227,7 @@ void Train::Add_Vagon(Vagon v)// Реалізувати метод додава�
 int main()
 {
 	Train train("Tom");
-	train.Show();
+	/*train.Show();
 	Vagon v{ 1,15 };
 	train.Add_Vagon(v);
 	train.Add_Vagon(Vagon{2,30});
@@ -197,29 +236,34 @@ int main()
 	train.Add_One_Passenger(1);
 	train.Add_One_Passenger(1);
 	train.Add_One_Passenger(1);
-	train.Add_One_Passenger(2);
+	train.Add_One_Passenger(2);*/
 	train.Show();
-	cout << "*****************************" << endl;
-	Train newTrain = Train(train);
-	newTrain.Show();
 
-	cout << "*****************************" << endl;
+	//train.SaveToFile();
+	train.LoadFromFile();
+	train.Show();
 
-	Train superTrain = train + newTrain;
-	superTrain.Show();
-	++superTrain;
-	++superTrain;
-	++superTrain;
-	++superTrain;
+	//cout << "*****************************" << endl;
+	//Train newTrain = Train(train);
+	//newTrain.Show();
+
+	//cout << "*****************************" << endl;
+
+	//Train superTrain = train + newTrain;
+	//superTrain.Show();
+	//++superTrain;
+	//++superTrain;
+	//++superTrain;
+	//++superTrain;
+	////superTrain.Show();
+
+	//superTrain.ChangePassangers(10);
+	//superTrain(3);
+	//superTrain(2,3);
 	//superTrain.Show();
 
-	superTrain.ChangePassangers(10);
-	superTrain(3);
-	superTrain(2,3);
-	superTrain.Show();
-
-	cout << "-------------------------------" << endl;
-	cout << (string)superTrain << endl;
+	//cout << "-------------------------------" << endl;
+	//cout << (string)superTrain << endl;
 	/*Vagon vagon = superTrain.getVagon(5);
 	vagon.Print();
 	vagon = superTrain[0];
