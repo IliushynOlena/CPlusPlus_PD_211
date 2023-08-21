@@ -2,6 +2,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <fstream>
 using namespace std;
 /* Collection:
 	Key (first): string - Value (second): list<string>
@@ -17,6 +18,7 @@ private:
 	map<string, list<string>> words;
 public:
 	Dictionary(string name) :name(name) {}
+	Dictionary() :name("no name") {}
 	void Print()
 	{
 		cout << "Dictionary : " << name << endl;
@@ -43,34 +45,85 @@ public:
 		if(IsExists(word))
 			words[word].push_back(translation);
 	}
+	friend ostream& operator << (ostream& out, const Dictionary& d);
+	friend istream& operator >> (istream& in,  Dictionary& d);
+		
 };
-int main()
+ostream& operator << (ostream& out, const Dictionary& d)
 {
-	Dictionary d("English-Ukrainian");
-	d.AddWord("run", { "bigtu", "zapochatkkyvatu", "pochatu","pospishatu"});
-	d.AddWord("mind", { "dymka", "dusha", "svidomist", "sens" });
-	d.AddWord("bad", { "luxo", "poganuy", "borg", "dificit" });
-	d.Print();
-	//add translaion from keyboard
-	string input = "";
-	cout << "Enter word to add translatins: "; getline(cin, input);
-
-	if (!d.IsExists(input))
-		cout << "Word not found!\n";
-	else
+	out << d.name << endl;
+	for (auto pair : d.words)
 	{
-		string translate = "";
+		out << pair.first << endl;
+		for (string t : pair.second)
+		{
+			out << t << endl;
+		}
+		out << "#" << endl;
+	}
+	return out;
+}
+istream& operator >> (istream& in,  Dictionary& d)
+{
+	getline( in, d.name);
+	while (!in.eof())
+	{
+		string word;
+		getline(in, word) ;
+		if (word.empty())break;
+		list<string> list;
+		string translate = "#";
 		do
 		{
-			cout << "Enter translate: ";
-			getline(cin, translate);
-			if(!translate.empty())
-				d.AddTranslation(input, translate);
+			getline(in, translate);
+			if(translate != "#")
+				list.push_back(translate);
 
-		} while (!translate.empty());
+		} while (translate !="#");
+		//words.insert(make_pair(word, list<string>(translate)));
+		d.words.insert(make_pair(word, list));
 	}
-	
-	d.Print();
+	return in;
+}
+int main()
+{
+	//Dictionary d("English-Ukrainian");
+	//d.AddWord("run", { "bigtu", "zapochatkkyvatu", "pochatu","pospishatu"});
+	//d.AddWord("mind", { "dymka", "dusha", "svidomist", "sens" });
+	//d.AddWord("bad", { "luxo", "poganuy", "borg", "dificit" });
+	//d.Print();
+
+	//ofstream out("dictionary.txt", ios_base::out);
+	//out << d;
+	//out.close();
+	//
+
+	////add translaion from keyboard
+	//string input = "";
+	//cout << "Enter word to add translatins: "; getline(cin, input);
+
+	//if (!d.IsExists(input))
+	//	cout << "Word not found!\n";
+	//else
+	//{
+	//	string translate = "";
+	//	do
+	//	{
+	//		cout << "Enter translate: ";
+	//		getline(cin, translate);
+	//		if(!translate.empty())
+	//			d.AddTranslation(input, translate);
+
+	//	} while (!translate.empty());
+	//}
+	//
+	//d.Print();
+	Dictionary read;
+	ifstream in("dictionary.txt", ios_base::in);
+	in >> read;
+	read.Print();
+
+
 
 	/*
 	setlocale(LC_CTYPE, "ukr");

@@ -43,7 +43,7 @@ void ShowLists(list<int>& l1, list<int>& l2)
 
 void main()
 {
-	/*
+	
 	
 	//створення двох пустих списків
 	list<int> list1, list2;
@@ -139,7 +139,7 @@ void main()
 	ShowLists(list1, list2);
 	cin.get();
 	//-------------------------------------
-	*/
+
 	////////////////////// Predicates
 	list<Book> library;//ctor - default
 	library.assign( {
