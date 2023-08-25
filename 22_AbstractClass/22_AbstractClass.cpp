@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <memory>
 using namespace std;
 
 class Animal//abstract class
@@ -126,6 +127,26 @@ int main()
 	RollCall(lion);
 	RollCall(duck);
 	RollCall(frog);
+
+	Animal* zoo[3]
+	{
+		new Frog(0.2, "Reptile", 16, "Frog", "Lake", 1, 0.6),
+		new Lion(180,"Predator",74,"King Lion","Africa",45),
+		new Duck(2, "Bird", 160, "Donald MackDack", "Ukraine", 6)
+	};
+	for (size_t i = 0; i < 3; i++)
+	{
+		delete zoo[i];
+	}
+
+
+	unique_ptr<Animal> zoo2[3]
+	{
+		make_unique<Animal>(0.2, "Reptile", 16, "Frog", "Lake", 1, 0.6),
+		make_unique<Animal>(180,"Predator",74,"King Lion","Africa",45),
+		make_unique<Animal>(2, "Bird", 160, "Donald MackDack", "Ukraine", 6)
+	};
+
 
 	/*Animal animal;
 	animal.Print();
