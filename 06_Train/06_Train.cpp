@@ -198,12 +198,12 @@ public:
 	}
 	operator string()
 	{
-		/*string res = "";
+		string res = "";
 		for (int i = 0; i < amount_of_vagons; i++)
 		{
 			res += to_string(vagon[i].number_Vagony) + " ";
 		}
-		return res;*/
+		return res;
 		return model;
 	}
 

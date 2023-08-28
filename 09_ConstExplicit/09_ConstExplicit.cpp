@@ -108,7 +108,7 @@ public:
     }
     int getSize()const
     {
-        return size;
+        return this->size;
     }
     int getValue(int index)const
     {

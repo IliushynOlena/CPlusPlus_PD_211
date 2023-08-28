@@ -54,7 +54,7 @@ public:
 	{
 		cout << "Rrrrr-rrrrrrr-rrrrrrrrrr-rrrrrrrr" << endl;
 	}
-	void Move()const
+	void Move()const override
 	{
 		cout << "I am a Lion. A can run with speed " << speed << " km/h" << endl;
 	}
