@@ -275,14 +275,18 @@ public:
             throw overflow_error("Error position");
         }
     }
-    friend ostream& operator <<(ostream& out, const List<int>& list);
-    friend istream& operator >>(istream& in, List<int>& list);
-    void AddToFile(List<T>& list)
+    //friend ostream& operator <<(ostream& out, const List<int>& list);
+    //friend istream& operator >>(istream& in, List<int>& list);
+    void AddToFile()
     {
         ofstream outfile("list.txt");
         if (outfile.is_open())
         {
-            outfile << list;
+            for (Node* i = head; i != nullptr; i = i->next)
+            {
+                outfile << i->value << endl;
+            }
+           
             outfile.close();
             cout << "Data is successfully written" << endl;
         }
@@ -293,54 +297,67 @@ public:
     }
     void ReadFile()
     {
-        string read_data;
+       
+        T read_data;
         ifstream infile("list.txt");
         if (infile.is_open())
         {
-            infile.seekg(0, ios::beg);
-            getline(infile, read_data);
+            while (!infile.eof())
+            {
+                //infile.seekg(0, ios::beg);
+                infile >> read_data;
+                
+                AddToTail(read_data);
+                cout << "Data read successfully :: " << read_data << endl;
+            }
+           
             infile.close();
-            cout << "Data read successfully :: " << read_data << endl;
         }
         else
         {
             cout << "Error data read!" << endl;
         }
+       // return read;
     }
 };
-template <typename T>
-ostream& operator <<(ostream& out, const List<T>& list)
-{
-    for (auto out : list)
-    {
-        out << list << endl;
-    }
-    return out;
-}
-template <typename T>
-istream& operator >>(istream& in, List<T>& list)
-{
-    T a;
-    getline(in, a);
-    list.AddToTail(a);
-    return in;
-}
+//template <typename T>
+//ostream& operator <<(ostream& out, const List<T>& list)
+//{
+//    for (auto out : list)
+//    {
+//        out << list << endl;
+//    }
+//    return out;
+//}
+//template <typename T>
+//istream& operator >>(istream& in, List<T>& list)
+//{
+//    T a;
+//    getline(in, a);
+//    list.AddToTail(a);
+//    return in;
+//}
 int main()
 {
     List<int> list;
-    list.AddToHead(12);
+   /* list.AddToHead(12);
     list.AddToTail(13);
     list.AddToTail(14);
     list.AddToTail(15);
 
-    ofstream out("list.txt", ios::out);
+    list.AddToFile();*/
+    list.ReadFile();
+    cout << "-----------------------" << endl;
+    list.PrintList();
+
+   /* ofstream out("list.txt", ios::out);
     out << list;
     out.close();
 
     List<int> readList;
     ifstream in("list.txt", ios::in);
     in >> readList;
-    readList.PrintList();
+    readList.PrintList();*/
 
 
 
