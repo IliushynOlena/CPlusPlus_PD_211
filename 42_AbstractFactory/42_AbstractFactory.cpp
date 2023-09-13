@@ -99,6 +99,40 @@ public:
         return new WoodenCat();
     }
 };
+class Pc
+{
+    MainBoar* board;
+    Box* box;
+    Processor* pr;
+public:
+    void SetBox(Box* box)
+    {
+        this->box = box;
+    }
+};
+class PcConfigurator 
+{
+    Pc pc;
+    IPCFactory* factory;
+public:
+    PcConfigurator(IPCFactory* factory)
+    {
+        this->factory = factory;
+    }
+    void SetFactory(IPCFactory* factory)
+    {
+        this->factory = factory;
+    }
+    void Conffigurate()
+    {
+        pc.SetBox(factory.CreateBox());
+        pc.SetBox(factory.CreateBox());
+        pc.SetBox(factory.CreateBox());
+        pc.SetBox(factory.CreateBox());
+    }
+
+
+};
 
 
 
