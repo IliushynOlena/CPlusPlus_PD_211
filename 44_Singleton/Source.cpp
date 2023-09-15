@@ -17,7 +17,13 @@ public:
 
 	void Log(string msg)
 	{
+		//write to file
 		cout << "Msg: " << msg << endl;
+	}
+	void ReadLog()
+	{
+		//read from file 
+		cout << "message" << endl;
 	}
 };
 
