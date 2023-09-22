@@ -44,6 +44,7 @@ class Trader
 public:
     void Update(CryptoCurrency * currency)
     {
+
          switch (currency->status)
          {
          case None:cout << "Do nothing" << endl; break;
